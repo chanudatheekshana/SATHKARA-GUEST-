@@ -1,0 +1,429 @@
+=== PAGE 1 ===
+WEBSITE
+FUNCTIONAL REQUIREMENTS
+DEVELOPMENT
+AND CUSTOMER JOURNEY
+PLAN
+Restaurant • Accommodation • Food & Beverage • Safari
+Enquiries • Massage Bookings
+Project location: Freeman Mawatha, Anuradhapura, Sri Lanka
+Main phone / WhatsApp: +94 77 863 8229 Footer landline: 025 222 2711
+Project scope: customer-facing website and customer dashboard only. No admin, staff or
+supplier dashboard is included.
+Visual note: the cover collage is an illustrative concept image generated for this proposal. It is not a photograph of the actual
+property or its food.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 1
+
+=== PAGE 2 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+1. Project overview
+The proposed platform combines a public restaurant and accommodation website with a customer account
+area and a room reservation workflow. Visitors can explore room categories and prices, view the restaurant
+menu, request a safari through the restaurant, contact the massage service, and make room or table
+enquiries.
+The room booking form calculates the accommodation estimate automatically. Booking requests are stored
+in a database and WhatsApp is used as the primary communication and notification channel. Hotel staff still
+verify availability and confirm pending requests.
+Important: WhatsApp is the notification and communication layer. The booking database
+remains the system of record; WhatsApp messages alone are not a reliable booking
+database.
+Confirmed business contact information
+Item Details
+Address Freeman Mawatha, Anuradhapura, Sri Lanka
+Main mobile / WhatsApp +94 77 863 8229
+Landline 025 222 2711 — display only in the website footer
+Confirmed operating rules
+Setting Decision
+Customer access Both registered customers and guest checkout
+Check-in 2:00 PM
+Check-out 12:00 noon
+Cancellation Automatic cancellation, subject to a cancellation policy still to be finalized
+Payments No online payment gateway in the initial release
+Dashboard scope Customer dashboard only
+Booking status New requests start as Pending; the hotel verifies and confirms
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 2
+
+=== PAGE 3 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+2. Website sitemap and navigation
+The public pages are accessible without login. The customer dashboard is available after customer
+authentication. Guest customers can manage a booking through a secure booking link or lookup process.
+Area Pages / functions
+Public website Home; About Us; Rooms & Rates; Restaurant & Menu; Experiences; Gallery; Location &
+Contact
+Booking entry points Book a Room; Table Reservation; Safari Request; Massage Enquiry
+Customer account Register; Login; User Dashboard
+Dashboard Overview; My Bookings; Booking Details; Booking History; My Enquiries; My Profile; Account
+Settings; Logout
+Global navigation elements
+● Header: logo, primary navigation, Book Now, Login / My Account.
+● Mobile navigation: compact menu with prominent booking access.
+● Sticky mobile actions: Call and WhatsApp buttons using +94 77 863 8229.
+● Footer: address, main mobile, landline 025 222 2711, quick links, check-in/check-out times and social
+links if supplied.
+● Use a consistent booking call-to-action on the homepage, room cards and room detail sections.
+Homepage section order
+Order Section Purpose
+1 Hero banner Property image, headline, Book a Room, View Menu, Call Now
+2 Facilities strip A/C, hot water, parking, on-site restaurant
+3 Room cards Four room types with capacity and nightly price
+4 Restaurant preview Food photography and menu link
+5 Experiences Safari and massage information
+6 Check-in / check-out 2:00 PM arrival; 12:00 noon departure
+7 Location and footer Address, contact and directions
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 3
+
+=== PAGE 4 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+3. Accommodation inventory and room pages
+The property has eight rooms across four room categories. Rates below are supplied by the business and
+are treated as nightly rates for the booking calculator.
+Room type Quantity Capacity Price per night
+Single 1 1 person Rs. 3,000
+Dual 2 2 people Rs. 4,000
+Triple 3 3 people Rs. 6,000
+Family 2 Up to 5 adults Rs. 8,000
+TOTAL 8 — —
+Facilities and restrictions
+● All rooms include air conditioning and hot water.
+● Parking is available for room visitors.
+● Rooms do not include kitchen facilities.
+● Meals can be ordered from the on-site restaurant.
+● Family rooms are described as accommodating up to five adults.
+Display notice on room pages: “Kitchen facilities are not available inside the rooms.
+Guests can enjoy meals at our on-site restaurant.”
+Room detail card requirements
+● Room photograph, room name, capacity, quantity in the property and price per night.
+● Facilities list: A/C, hot water and parking for room visitors.
+● Clear no-kitchen notice.
+● Request Booking button that preselects the room type in the booking form.
+● Availability must be checked for the selected dates; do not display a static “available now” claim unless
+the database confirms it.
+Check-in and check-out
+Policy Time / wording
+Check-in From 2:00 PM
+Check-out By 12:00 noon
+Early check-in / late check-out On request, subject to availability; contact the hotel
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 4
+
+=== PAGE 5 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+4. Room booking system and automatic
+pricing
+The booking journey should be short, mobile-friendly and divided into clear steps. The customer must see
+an updated accommodation estimate whenever the selected dates, room categories or quantities change.
+Step Customer action System behaviour
+1 Choose check-in and check-out dates Validate dates; checkout must be after check-in; calculate nights
+2 Select room category and quantity Show room inventory and date-based availability
+3 Enter adults and children Validate the selected room capacities and guest counts
+4 Enter contact details Collect full name, phone, email and special requests
+5 Select optional services Record safari, massage and table requests separately
+6 Review price summary Calculate accommodation total on the server and display it
+7 Submit request Create booking reference and save status as Pending
+8 WhatsApp notification Notify the restaurant or open a prefilled WhatsApp flow
+9 Hotel verification Staff verify availability and communicate confirmation
+Price calculation
+Accommodation total = sum of (room quantity × nightly rate × number of nights)
+Example selection Calculation Total
+2 Dual Rooms × 3 nights 2 × Rs. 4,000 × 3 Rs. 24,000
+1 Triple + 1 Dual × 2 nights (Rs. 6,000 + Rs. 4,000) × 2 Rs. 20,000
+Booking form fields
+Field Requirement
+Check-in / check-out Date pickers; checkout later than check-in
+Guests Adults and children
+Rooms Room type and quantity; only available inventory can be requested
+Customer details Full name, mobile number and email address
+Additional services Optional safari, massage and table reservation requests
+Special requests Free-text notes
+The browser may show an instant estimate, but the server must recalculate and validate
+the final amount before saving the booking.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 5
+
+=== PAGE 6 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+5. Availability, booking statuses and
+WhatsApp notifications
+Room inventory must be tracked by individual physical room or by a transaction-safe category inventory
+model. Date overlap checks must prevent two confirmed reservations from consuming the same room for
+overlapping nights.
+Availability rules
+● Maintain the total inventory: 1 Single, 2 Dual, 3 Triple and 2 Family rooms.
+● Check the full stay period, not only the check-in date.
+● Exclude cancelled reservations from occupied inventory.
+● Recheck availability at request submission and again when the hotel confirms.
+● Use a temporary hold or controlled pending-request process to prevent conflicting requests.
+● Handle simultaneous booking submissions safely in the database.
+Booking status model
+Status Meaning
+Pending Customer submitted a request; hotel has not confirmed it
+Confirmed Hotel verified availability and accepted the reservation
+Completed Customer stay is finished
+Cancelled Booking was cancelled
+Rejected Hotel could not accept the request
+WhatsApp notification workflow
+Stage Action
+Customer submits Website validates and saves the booking
+Backend event A booking reference is generated and notification is queued
+Restaurant notification WhatsApp message is sent to +94 77 863 8229
+Hotel follow-up Restaurant contacts supplier if needed, checks room availability and contacts customer
+Status update Customer dashboard reflects Pending, Confirmed, Rejected or Cancelled
+WhatsApp implementation choices
+Click-to-chat: the website creates a prefilled booking message and the customer taps Send. This is simple
+but not automatic delivery; it depends on the customer sending the message.
+WhatsApp Business Platform/API: the backend can send notifications automatically after a booking is
+saved. This requires a WhatsApp Business setup, API credentials, approved templates where applicable and
+delivery/error handling.
+Recommendation: use the WhatsApp Business Platform if the requirement is automatic
+restaurant notifications without asking the customer to manually send a message.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 6
+
+=== PAGE 7 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+6. Cancellation policy and customer
+dashboard
+Customers can cancel bookings themselves, subject to the business cancellation policy. The customer
+confirmed automatic cancellation as the desired workflow, but the cancellation deadline and any fee have
+not yet been supplied.
+Cancellation workflow
+● Customer opens My Bookings or a secure guest booking link.
+● Customer selects Cancel Booking and reviews a confirmation prompt.
+● Backend checks whether the booking is eligible for cancellation.
+● If eligible, the booking status changes to Cancelled and the event is recorded.
+● Availability is recalculated and the customer receives an acknowledgement.
+● Cancelled bookings cannot be reactivated by the customer.
+Business decision still required: define the cancellation cut-off (for example 24 or 48 hours
+before check-in) and whether cancellation fees apply. Do not publish a free-cancellation
+promise until approved.
+Customer dashboard navigation
+Dashboard section Features
+Overview Booking counts, pending requests, confirmed bookings and recent activity
+My Bookings Upcoming and current reservations with status
+Booking Details Reference, dates, room, guests, estimate, services and contact options
+Booking History Completed, cancelled and rejected bookings
+My Enquiries Safari, massage, table and general enquiries
+My Profile Name, email and phone details
+Account Settings Password and account security settings
+Access methods
+Registered customer: create an account, verify it, log in and manage bookings in the dashboard. Bookings
+are associated with the authenticated profile.
+Guest customer: book without registration, receive a unique booking reference and access booking details
+through a secure, unguessable management link or verification flow.
+If a guest later registers, provide a secure process to link eligible previous bookings to the new account.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 7
+
+=== PAGE 8 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+7. Restaurant and food menu
+The restaurant menu should be divided into clear categories with item names, portion options and prices.
+The website should show all prices in Sri Lankan Rupees (LKR).
+Rice, noodles and kottu
+Menu item Full (F) Normal (N)
+Chicken Fried Rice Rs. 1,200 Rs. 800
+Mixed Rice Rs. 1,800 Rs. 1,300
+Chicken Cheese Kottu Rs. 1,700 Rs. 1,300
+Chicken Kottu Rs. 1,200 Rs. 800
+Chicken Mixed Noodles Rs. 1,200 Rs. 800
+F is assumed to mean Full and N is assumed to mean Normal. Confirm these labels before launch.
+Rice & curry — single portion only
+Item Price
+Vegetable Rs. 400
+Egg Rs. 450
+Fish Rs. 450
+Chicken Rs. 500
+Pork Rs. 700
+Buffet — main meal plus dessert
+Meal Price
+Breakfast Rs. 1,000
+Lunch Rs. 1,200
+Dinner Rs. 1,200
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 8
+
+=== PAGE 9 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+8. Bites, beverages and additional services
+Bites
+Category Items Price status
+Pork Devilled Pork; Pork Black Curry; Pork Stew Price not supplied
+Chicken Devilled Chicken; Chicken Stew; Chicken Fries Price not supplied
+Other bites Fish Fries; French Fries Price not supplied
+Juices and soft drinks
+Category Items Price status
+Juices Watermelon; Papaya Price not supplied
+Other drinks Sunquick; Sprite; Pepsi; Coca-Cola; Water Price not supplied
+Do not invent missing menu prices. Display “Contact us for current price” or omit prices
+until the business supplies them.
+Wilpattu Safari Tours — external supplier arrangement
+The restaurant receives the guest's safari request and contacts its external supplier to confirm availability
+and price. The supplier is not presented as the primary booking contact.
+● Package information supplied: entrance tickets, transportation, breakfast, lunch, drinking water and a
+qualified tour guide.
+● Enquiry form: preferred date, number of participants, guest name, phone and notes.
+● Restaurant receives a WhatsApp notification and contacts the supplier.
+● The restaurant returns the confirmed availability and price to the guest.
+● Show “Arranged through our trusted external partner” and “Contact for quotation” until package price is
+confirmed.
+Aura Wellness Sports Massage
+● Call and WhatsApp booking options.
+● Optional request form for preferred date, time, name and phone.
+● Mobile service may be available at the guest's room, as previously described.
+● The supplied profile mentions an NVQ Level 4 sports masseur.
+● Service descriptions may mention circulation, recovery, pain relief, flexibility and range of motion; avoid
+presenting these as guaranteed medical outcomes.
+● Massage service prices and exact treatment list remain to be confirmed.
+Table reservations
+Provide a Call to Reserve a Table action and an optional enquiry form with date, time, party size, name and
+phone. A table request is not confirmed until the restaurant responds.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 9
+
+=== PAGE 10 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+9. Technical architecture and security
+Technology Purpose
+React + Vite Frontend application and routing
+Tailwind CSS Responsive interface and design system
+Supabase Auth Customer registration, login and authentication
+Supabase PostgreSQL Bookings, rooms, menu, enquiries and status history
+Supabase Row Level Security Restrict customer access to their own records
+Supabase Edge Functions Secure server-side booking, pricing and notification logic
+WhatsApp Business Platform Automated WhatsApp notifications
+Vercel Frontend deployment and hosting
+Suggested database tables
+Table Purpose
+profiles Customer profile information
+rooms Room categories, capacities and nightly rates
+room_units Eight individual physical room records
+bookings Main booking records and status
+booking_rooms Room category, quantity and rate snapshot per booking
+booking_guests Guest counts and guest details
+booking_services Safari, massage and table requests
+booking_status_history Audit trail of booking status changes
+menu_categories Restaurant menu sections
+menu_items Food and beverage items and prices
+notifications WhatsApp notification queue and delivery records
+Security and reliability requirements
+● Customers may read and manage only their own bookings and profile.
+● Guest management links must use secure, unguessable tokens and avoid exposing sequential booking
+IDs.
+● Enforce database permissions with Row Level Security.
+● Never expose WhatsApp API credentials or service-role keys in frontend code.
+● Recalculate prices and validate room availability on the server.
+● Use transaction-safe booking allocation to avoid overbooking.
+● Record cancellation and status changes for traceability.
+● Log notification success and failure; provide a fallback contact process.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 10
+
+=== PAGE 11 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+No admin dashboard is part of this scope. Nevertheless, an authorized staff workflow is
+needed outside the customer UI to review requests, confirm bookings, update room
+inventory and maintain menu prices.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 11
+
+=== PAGE 12 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+10. UI/UX, responsive design and SEO
+Recommended visual direction
+Design element Recommendation
+Primary colour Deep forest green
+Secondary colour Warm beige
+Background Off-white
+Accent Golden brown
+Headings Poppins or a similar clean geometric sans-serif
+Body text Inter or a similar highly readable sans-serif
+Visual style Modern, welcoming, natural and premium
+Responsive behaviour
+● Desktop: full navigation, wide hero, multi-column room and food cards, dashboard sidebar.
+● Tablet: condensed navigation and adaptive two-column layouts.
+● Mobile: single-column content, touch-friendly booking controls, fixed Call and WhatsApp actions and
+compact dashboard navigation.
+SEO and performance
+● Unique page titles and descriptions for rooms, restaurant, safari and massage.
+● Local search terms focused on Anuradhapura and Freeman Mawatha.
+● Compressed photographs, lazy loading and responsive image sizes.
+● Accessible image alt text, semantic headings and readable contrast.
+● Add map directions and consistent business contact information.
+Development phases
+Phase Deliverables
+01 Branding, design system and UI/UX prototypes
+02 Homepage, navigation, About, contact and location
+03 Accommodation pages and room inventory model
+04 Booking form, price calculator and availability engine
+05 WhatsApp notification integration
+06 Authentication, customer dashboard and guest booking
+07 Cancellation workflow and status history
+08 Restaurant menu, safari, massage and table enquiries
+09 Gallery, responsive polish, SEO and accessibility
+10 Security testing, booking concurrency tests and deployment
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 12
+
+=== PAGE 13 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+11. Key user journeys and acceptance criteria
+Room booking journey
+Visitor opens Rooms → selects dates → chooses room type and quantity → enters guest and contact details
+→ sees automatic estimate → submits request → receives reference → restaurant receives notification →
+hotel verifies and confirms → customer tracks status.
+Safari journey
+Customer opens Experiences → selects Safari Request → enters date and participants → submits →
+restaurant receives request → restaurant contacts supplier → restaurant returns availability and price to
+customer.
+Massage journey
+Customer opens Massage → taps Call or WhatsApp, or submits a session request → customer and massage
+provider coordinate directly.
+Acceptance criteria
+● The booking calculator correctly multiplies room rate, quantity and number of nights.
+● Checkout date must be later than check-in date.
+● Room quantities cannot exceed available inventory for the entire stay.
+● A booking request is stored with a unique reference and Pending status.
+● A WhatsApp notification is generated according to the selected integration method.
+● A customer can view only their own account bookings.
+● A guest can access their booking only through a secure lookup or tokenized link.
+● Eligible cancellation updates the booking status and releases inventory.
+● Menu items with unknown prices are not assigned invented prices.
+● The landline appears only in the footer.
+● All mobile Call and WhatsApp actions use +94 77 863 8229.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 13
+
+=== PAGE 14 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+12. Information required before launch
+Item Current position / action
+Business / restaurant name Not yet supplied; required for branding and page titles
+Logo Not yet supplied
+Business email Not confirmed
+Restaurant opening hours Not supplied
+Actual room photos Required; replace illustrative concept imagery
+Actual food photos Required for menu presentation
+F and N labels Assumed Full and Normal; confirm before launch
+Bites prices Not supplied
+Juice and soft-drink prices Not supplied
+Safari price Not supplied; use quotation wording meanwhile
+Massage treatments and prices Not supplied
+Cancellation deadline Not finalized
+Cancellation fee Not finalized
+WhatsApp Business Platform Business account/API setup and message templates may be required
+Staff booking workflow Must be agreed; no admin UI is included
+Decisions already confirmed
+● Both guest checkout and registered customer booking are supported.
+● Check-in is 2:00 PM and check-out is 12:00 noon.
+● Automatic cancellation is required, subject to the final policy.
+● Customer dashboard only; no admin, staff or supplier dashboard.
+● Main phone and WhatsApp number: +94 77 863 8229.
+● Landline 025 222 2711 appears only in the footer.
+● Room rates and inventory are as listed in this document.
+● No online payment gateway is required for the initial release.
+Final project recommendation
+Build the project as a hospitality booking platform rather than a static brochure website. The public pages
+should attract customers and explain the services; the booking engine should calculate prices and protect
+inventory; WhatsApp should support fast communication; and the customer dashboard should give
+customers a secure place to manage reservations and enquiries.
+This document is the consolidated development blueprint. The business name, actual
+property images, unpriced menu items, WhatsApp API setup and final cancellation policy
+should be confirmed before production launch.
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 14
+
+=== PAGE 15 ===
+RESTAURANT & ACCOMMODATION WEBSITE | DEVELOPMENT PLAN
+END OF DEVELOPMENT PLAN
+Planning document • Prices in Sri Lankan Rupees (LKR) Page 15
+
